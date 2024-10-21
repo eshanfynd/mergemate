@@ -1,0 +1,36 @@
+trigger: none
+
+pr:
+  branches:
+    include:
+    - '*'
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- checkout: self
+  persistCredentials: true
+
+- task: PythonScript@0
+  inputs:
+    scriptSource: 'inline'
+    script: |
+      import os
+      import requests
+
+      # Access predefined variables
+      repo_name = os.getenv('BUILD_REPOSITORY_NAME')
+      pr_id = os.getenv('SYSTEM_PULLREQUEST_PULLREQUESTID')
+      project_name = os.getenv('SYSTEM_TEAMPROJECT')
+
+      # Prepare the data
+      data = {"data":{
+        'repo_name': repo_name,
+        'pr_id': pr_id,
+        'project_name': project_name
+      },"agent":{"slug":"FexPRAgent"}}
+
+      # Replace with your URL
+      url = "https://dbe7-122-171-17-199.ngrok-free.app"
+      response = requests.post(url, json=data)

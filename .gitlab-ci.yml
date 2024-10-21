@@ -1,0 +1,12 @@
+include: 'https://gitlab.com/api/v4/projects/9905046/repository/files/gitlab%2Fcommon-gitlab-ci.yml/raw?ref=master&private_token=FjCQxPFMNXJwmaomMoKi&dummy.yml'
+
+fex_pr_review:
+  stage: do
+  image: python:3.10
+  only:
+    - merge_requests
+  script:
+    - pip install requests
+    - python3 merge_request_review.py $CI_PROJECT_ID $CI_MERGE_REQUEST_IID
+  tags:
+    - docker

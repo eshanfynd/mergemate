@@ -1,0 +1,24 @@
+code_review_run_configuration:
+  pr_create:
+    enabled: true
+  pr_update:
+    enabled: false
+  pr_comment:
+    enabled: false
+
+code_review_criteria:
+  correctness_and_logic:
+    enabled: true
+  performance_optimization:
+    enabled: true
+  error_handling:
+    enabled: true
+  resource_management:
+    enabled: true
+  code_style_and_quality:
+    enabled: true
+  security:
+    enabled: true
+  function_optimization_and_refactoring_suggestion:
+    enabled: true
+  exclude_file_patterns: "*.csv,*.tsv"
