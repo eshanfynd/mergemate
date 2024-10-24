@@ -17,7 +17,7 @@ def push_changes(repo_path, commit_message, branch='main'):
         repo = git.Repo(repo_path)
         if not repo.is_dirty():
             return "No changes detected in the repository."
-        repo.git.add(A=True)
+        repo.git.add(update=True)
         repo.index.commit(commit_message)
         origin = repo.remote(name='origin')
         origin.push(refspec=f'{branch}:{branch}')
