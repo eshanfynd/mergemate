@@ -6,9 +6,11 @@ from app.api import api
 
 app = FastAPI()
 
+security_token = "qwertyuiopasdfghjklzxcvbnm" 
 
 @app.get("/")
 def root():
+    print("I am here")
     return {"message": "Fast API in Python"}
 
 
